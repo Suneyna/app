@@ -8,6 +8,7 @@ app = Flask(__name__)
 # Set up logging
 credential = DefaultAzureCredential()
 logger = logging.getLogger(__name__)
+logger.setLevel("INFO")
 logger.addHandler(AzureLogHandler(
     connection_string='InstrumentationKey=562bb4b7-82f0-4cf1-bd03-c739c2a94e28',
     credential=credential
@@ -16,7 +17,7 @@ logger.addHandler(AzureLogHandler(
 @app.route('/')
 def home():
     logger.info("Hello, World! endpoint was called")
-    return "Hello, World!"
+    return "Hello, My World!"
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
